@@ -1,0 +1,9 @@
+const myFootprints1 = 8
+const myFootprints2 = 2
+const myFootprints3 = 10
+const myFootprints4 = 1
+const myFootprints5 = 2
+const myFootprints6 = 20
+const myFootprints7 = 12
+const myFootprints8 = 4
+const total = myFootprints1 + myFootprints2 + myFootprints3 + myFootprints4 + myFootprints5 + myFootprints6 + myFootprints7 + myFootprints8
