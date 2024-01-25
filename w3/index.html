@@ -1,55 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week 3 - Carbon Footprints Household</title>
-    <script defer src="main.js"></script>
-  </head>
-  <body>
-    <h1>Your Carbon Footprints Homesize</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 3 -Cardon Footprints Household</title>
+  <script defer src="main.js"></script>
+</head>
+<body>
 
-    <div id="result"></div>
+  <h1>Your Carbon Footprints Homesize</h1>
 
-    <label for="sizeOfHome">Select The Size of Your House: </label>
-    <select id="sizeOfHome" onchange="updateResult()">
-      <option value="">--Make a Choice--</option>
-      <option value="large">Large</option>
-      <option value="medium">Medium</option>
-      <option value="small">Small</option>
-      <option value="apartment">Apartment</option>
-    </select>
+  <div id="result"></div>
 
-    <p></p>
+  <label for="sizeOfHome">Select The Size of Your House: </label>
+  <select id="sizeOfHome" onchange="updateResult()">
+    <option value="">--Make a Choice--</option>
+    <option value="large">Large</option>
+    <option value="medium">Medium</option>
+    <option value="small">Small</option>
+    <option value="apartment">Apartment</option>
+  </select>
 
-    <script>
-      function determineHouseholdPts(sizeOfHome) {
-        let carbonPts = 0; // Assuming you have carbonPts defined somewhere
+  <p></p>
 
-        if (sizeOfHome === "large") {
-          carbonPts += 10;
-        } else if (sizeOfHome === "medium") {
-          carbonPts += 7;
-        } else if (sizeOfHome === "small") {
-          carbonPts += 4;
-        }
+  <script>
+    function determineHouseholdPts(sizeOfHome) {
+      let carbonPts = 0; 
 
+      if (sizeOfHome === "large") {
+        carbonPts += 10;
+      } else if (sizeOfHome === "medium") {
+        carbonPts += 7;
+      } else if (sizeOfHome === "small") {
+        carbonPts += 4;
+      }
+
+      let resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `<p>${sizeOfHome} Home: ${carbonPts} Carbon Points</p>`;
+    }
+
+    function updateResult() {
+      let sizeOfHomeDropdown = document.getElementById("sizeOfHome");
+      let selectedSize = sizeOfHomeDropdown.value;
+
+      if (selectedSize) {
+        determineHouseholdPts(selectedSize);
+      } else {
+        // Handle the case when no option is selected
         let resultDiv = document.getElementById("result");
-        resultDiv.innerHTML = `<p>${sizeOfHome} Home: ${carbonPts} Carbon Points</p>`;
+        resultDiv.innerHTML = "";
       }
-
-      function updateResult() {
-        let sizeOfHomeDropdown = document.getElementById("sizeOfHome");
-        let selectedSize = sizeOfHomeDropdown.value;
-        
-        if (selectedSize) {
-          determineHouseholdPts(selectedSize);
-        } else {
-          // Handle the case when no option is selected
-          let resultDiv = document.getElementById("result");
-          resultDiv.innerHTML = "";
-        }
-      }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
