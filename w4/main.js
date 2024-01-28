@@ -58,9 +58,23 @@ for (arr of cfpData){
   newP.textContent = `Carbon Footprint total is ${arr[4]}`;
   output.appendChild(newP);
 
-  const newP1 = document.createElement("p");
-    newP1.textContent = `Carbon Footprint total is ${arr[3]}`;
-    output.appendChild(newP1);
+    const newPHouseSizes = document.createElement("p");
+    newPHouseSizes.textContent = `House Size is ${arr[2]}`;
+    output.appendChild(newPHouseSizes);
+
+    const newPHouseSize = document.createElement("p");
+    newPHouseSize.textContent = `House Size is ${arr[1]}`;
+    output.appendChild(newPHouseSize);
+
+    const newPHouseMembers = document.createElement("p");
+    newPHouseMembers.textContent = `Number of House Members is ${arr[3]}`;
+    output.appendChild(newPHouseMembers);
+
+    const newPHouseMember = document.createElement("p");
+    newPHouseMember.textContent = `Number of House Member is ${arr[2]}`;
+    output.appendChild(newPHouseMember);
+
+   
 
 }
 }
