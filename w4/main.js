@@ -51,8 +51,21 @@ function start(houseHoldMembers, houseHoldSize) {
 
 
 function displayOutput() {
+for (arr of cfpData){
+  console.log(arr)
+  const output = document.getElementById("output");
+  const newP = document.createElement("p");
+  newP.textContent = `Carbon Footprint total is ${arr[4]}`;
+  output.appendChild(newP);
+
+  const newP1 = document.createElement("p");
+    newP1.textContent = `Carbon Footprint total is ${arr[3]}`;
+    output.appendChild(newP1);
 
 }
+}
+
+
 
 
 start(5, "apt");
