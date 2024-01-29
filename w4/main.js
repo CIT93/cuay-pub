@@ -54,43 +54,25 @@ function displayOutput() {
 for (arr of cfpData){
   console.log(arr)
   const output = document.getElementById("output");
+  const newH2 = document.createElement("h2");
+  newH2.textContent = `Carbon Footprint ${arr[4]}`;
+  const newH3 = document.createElement("h3");
+  newH3.textContent = `Based on number in and size of home`;
   const newP = document.createElement("p");
-  newP.textContent = `Carbon Footprint total is ${arr[4]}`;
+  newP.textContent = `This number is based on the number of people in the house of ${arr[0]} (score: ${arr[2]})`;
+  newP.textContent += ` and a ${arr[1]} size of home (score:${arr[3]}.)`;
+  output.appendChild(newH2);
+  output.appendChild(newH3);
   output.appendChild(newP);
-
-    const newPHouseSizes = document.createElement("p");
-    newPHouseSizes.textContent = `House Size is ${arr[2]}`;
-    output.appendChild(newPHouseSizes);
-
-    const newPHouseSize = document.createElement("p");
-    newPHouseSize.textContent = `House Size is ${arr[1]}`;
-    output.appendChild(newPHouseSize);
-
-    const newPHouseMembers = document.createElement("p");
-    newPHouseMembers.textContent = `Number of House Members is ${arr[3]}`;
-    output.appendChild(newPHouseMembers);
-
-    const newPHouseMember = document.createElement("p");
-    newPHouseMember.textContent = `Number of House Member is ${arr[2]}`;
-    output.appendChild(newPHouseMember);
-
-   
-
 }
 }
 
 
 
-
-start(5, "apt");
-start(4, "large");
-start(3, "medium");
-start(2, "small");
-start(6, "large");
-start(1, "apt");
-start(3, "large");
+start(5, "large");
 start(4, "medium");
-start(5, "small");
+start(3, "small");
+start(2, "apt");
 
 displayOutput()
 
