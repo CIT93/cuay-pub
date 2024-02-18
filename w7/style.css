@@ -1,0 +1,26 @@
+
+html {
+    font-size: 22px
+}
+
+body {
+    background-color: pink;
+    color: blue;
+}
+
+input:in-range {
+    background-color: lightblue;
+}
+
+input:out-of-range {
+    background-color: red;
+}
+
+table,th,td {
+    border: 1px solid;
+    padding: 5px
+}
+tbody, tr:nth-child(odd) {
+    background-color: hotpink;
+    color: blue;
+}
