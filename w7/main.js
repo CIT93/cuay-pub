@@ -1,6 +1,5 @@
 import {renderTbl} from "./render.js";
 
-
 const FORM = document.getElementById("form");
 const OUTPUT = document.getElementById("output");
 
@@ -39,22 +38,31 @@ function determineHouseHoldPts(numberOfPeople) {
   return houseHoldPoints;
 }
 
-
 function displayOutput() {
   OUTPUT.innerHTML = "";
-  for (const obj of cfpData) {
-    const newH2 = document.createElement("h2");
-    newH2.textContent = `Carbon Footprint Calculator`;
 
-    const newH3 = document.createElement("h3");
-    newH3.textContent = `The Carbon FootPrint for ${obj.firstName} ${obj.lastName} is ${obj.cfpTotal}`;
+ 
+  let existingH2 = document.querySelector("#output h2");
+  let existingH3 = document.querySelector("#output h3");
+  
+  if (!existingH2) {
+    existingH2 = document.createElement("h2");
+    existingH2.textContent = `Carbon Footprint Calculator`;
+    OUTPUT.appendChild(existingH2);
+  }
+
+  for (const obj of cfpData) {
+    if (!existingH3) {
+      existingH3 = document.createElement("h3");
+      OUTPUT.appendChild(existingH3);
+    }
+
+    existingH3.textContent = `The Carbon FootPrint for ${obj.firstName} ${obj.lastName} is ${obj.cfpTotal}`;
 
     const newP = document.createElement("p");
     newP.textContent = `This number is based on the number of people in the house of ${obj.houseM} (score: ${obj.houseMPTS})`;
     newP.textContent += ` and a ${obj.houseS} size home (score: ${obj.houseSPTS})`;
 
-    OUTPUT.appendChild(newH2);
-    OUTPUT.appendChild(newH3);
     OUTPUT.appendChild(newP);
   }
 
