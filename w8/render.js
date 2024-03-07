@@ -1,78 +1,7 @@
-// const TBL = document.getElementById("tab-data");
-
-// function renderTblHeading() {
-//   TBL.innerHTML = "";
-
-//   const table = document.createElement("table");
-//   const thead = document.createElement("thead");
-//   const tr = document.createElement("tr");
-//   const headingTextArr = ["Name", "HouseHold", "HouseSize", "Footprint", "Actions"];
-//   headingTextArr.forEach(function (text) {
-//     const th = document.createElement("th");
-//     th.textContent = text;
-//     tr.appendChild(th);
-//   });
-
-//   thead.appendChild(tr);
-//   table.appendChild(thead);
-
-//   return table;
-// }
-
-// function renderTblBtn(index, data){
-//   const td = document.createElement("td");
-//   const btnEdit = document.createElement("button");
-//   const btnDel = document.createElement("button");
-//   btnEdit.textContent = "Edit";
-//   btnDel.textContent = "Del";
-//   td.appendChild(btnEdit);
-//   td.appendChild(btnDel);
-//   btnDel.addEventListener(`click`, function(e){
-//     data.splice(index, 1);
-//     renderTbl(data);
-//   })
-//   btnEdit.addEventListener(`click`, function(e){
-    
-//   } )
-//   return td;
-// }
-
-// function renderTblBody(data) {
-// const tbody = document.createElement("tbody");
-// data.forEach(function (obj, index) {
-//   console.log(index);
-//   const tr = document.createElement("tr");
-//   for (const [key, value] of Object.entries(obj)) {
-//     console.log(`key ${key} value ${value}`);
-//     if (key !== "lastName" && key !== "houseMPTS" && key !== "houseSPTS") {
-//       const td = document.createElement("td");
-//       td.textContent = value;
-//       tr.appendChild(td);
-//     }
-//   }
-
-// const td = renderTblBtn(index, data);
-// tr.appendChild(td);
-// tbody.appendChild(tr);
-// });
-// return tbody;
-// }
-
-// function renderTbl(data) {
-//   const table = renderTblHeading();
-//   const tbody = renderTblBody(data);
-//   table.appendChild(tbody);
-//   TBL.appendChild(table);
-// }
-
-
-// export { renderTbl };
-
-
 const TBL = document.getElementById("tab-data");
 
 function renderTblHeading() {
-  TBL.innerHTML = "";
+  // TBL.innerHTML = "";
 
   const table = document.createElement("table");
   const thead = document.createElement("thead");
@@ -90,7 +19,7 @@ function renderTblHeading() {
   return table;
 }
 
-function renderTblBtn(index, data) {
+function renderTblBtn(index, data){
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
   const btnDel = document.createElement("button");
@@ -99,56 +28,50 @@ function renderTblBtn(index, data) {
   td.appendChild(btnEdit);
   td.appendChild(btnDel);
 
-  btnDel.addEventListener("click", function (e) {
+  btnDel.addEventListener(`click`, function(e){
     data.splice(index, 1);
     renderTbl(data);
-  });
-
-  btnEdit.addEventListener("click", function (e) {
-    // Populate the form with existing data for editing
-    populateForm(data[index]);
-  });
+  })
+  btnEdit.addEventListener(`click`, function(e){
+    const newName = prompt("Enter new name:");
+    if (newName !== null) 
+      data[index].Name = newName;
+      renderTbl(data); 
+  }
+      )
 
   return td;
 }
 
 function renderTblBody(data) {
-  const tbody = document.createElement("tbody");
-
-  if (data.length > 0) {
-    data.forEach(function (obj, index) {
-      const tr = document.createElement("tr");
-      for (const [key, value] of Object.entries(obj)) {
-        if (key !== "lastName" && key !== "houseMPTS" && key !== "houseSPTS") {
-          const td = document.createElement("td");
-          td.textContent = value;
-          tr.appendChild(td);
-        }
-      }
-
-      const td = renderTblBtn(index, data);
+const tbody = document.createElement("tbody");
+data.forEach(function (obj, index) {
+  const tr = document.createElement("tr");
+  for (const [key, value] of Object.entries(obj)) {
+    if (key !== "lastName" && key !== "houseMPTS" && key !== "houseSPTS") {
+      const td = document.createElement("td");
+      td.textContent = value;
       tr.appendChild(td);
-      tbody.appendChild(tr);
-    });
+    }
   }
 
-  return tbody;
+const td = renderTblBtn(index, data);
+tr.appendChild(td);
+tbody.appendChild(tr);
+});
+return tbody;
 }
 
 function renderTbl(data) {
-  const table = renderTblHeading();
-  const tbody = renderTblBody(data);
-  table.appendChild(tbody);
-  TBL.appendChild(table);
+  TBL.innerHTML = ""; 
+  if (data.length === 0) {
+    console.log("clear the exisiting table")
+    const table = renderTblHeading();
+    const tbody = renderTblBody(data);
+    table.appendChild(tbody);
+    TBL.appendChild(table);
+  }
 }
 
-// Function to populate the form with existing data for editing
-function populateForm(data) {
- 
-  document.getElementById("firstname").value = data.firstName;
-  document.getElementById("lastname").value = data.lastName;
-  document.getElementById("housem").value = data.houseM;
-  document.getElementById("houseSize").value = data.houseSize;
-}
 
 export { renderTbl };

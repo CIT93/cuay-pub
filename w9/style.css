@@ -1,0 +1,37 @@
+
+html {
+    font-size: 22px
+}
+
+body {
+    background-color: pink;
+    color: blue;
+}
+
+input:in-range {
+    background-color: lightblue;
+}
+
+input:out-of-range {
+    background-color: red;
+}
+
+table,th,td {
+    border: 1px solid;
+    padding: 5px
+}
+tbody, tr:nth-child(odd) {
+    background-color: hotpink;
+    color: blue;
+}
+
+input:focus {
+    border: 2px solid #3498db; /* Change the border color when focused */
+    outline: none; /* Remove the default focus outline */
+  }
+  
+  /* Style input fields when they are unfocused */
+  input:not(:focus) {
+    border: 1px solid #ccc; /* Change the border color when not focused */
+  }
+  
