@@ -25,13 +25,10 @@ tbody, tr:nth-child(odd) {
     color: blue;
 }
 
-input:focus {
-    border: 2px solid #3498db; /* Change the border color when focused */
-    outline: none; /* Remove the default focus outline */
-  }
-  
-  /* Style input fields when they are unfocused */
-  input:not(:focus) {
-    border: 1px solid #ccc; /* Change the border color when not focused */
-  }
+.error {
+    color: red;
+}
+.invalid {
+    border-color: red;
+}
   
