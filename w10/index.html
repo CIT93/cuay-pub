@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 10 - Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="carbonFootprintModule.js"></script>
+    <script type="module" src="render.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="global.js"></script>
+  </head>
+
+  <body>
+    <form id="form">
+      <fieldset>
+        <legend>Calculate your Carbon Footprint</legend>
+        <div>
+          <label>First Name:</label>
+          <input type="text" name="firstName" id="firstName" maxlength="20" />
+          <span id="firstNameError" class="error"></span>
+        </div>
+        <div>
+          <label> Last Name:</label>
+          <input type="text" name="lastName" id="lastName" maxlength="25" />
+          <span id="lastNameError" class="error"></span>
+        </div>
+        <div>
+          <label for="housem">How many people in your home:</label>
+          <input
+            type="number"
+            id="housem"
+            name="housem"
+            min="1"
+            max="6"
+            required
+          />
+        </div>
+        <div>
+          <label for="houseSize">Consider the size of your home:</label>
+          <select id="houseSize" name="houseSize" required>
+            <option value="">---Please select Size of Home---</option>
+            <option value="large">Large</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+            <option value="apt">Apartment</option>
+          </select>
+        </div>
+        <button type="submit">Submit</button><br />
+        <span id="submitError" class="error"></span>
+      </fieldset>
+    </form>
+    <div id="tab-data"></div>
+  </body>
+</html>
