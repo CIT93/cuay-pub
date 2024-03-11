@@ -1,7 +1,7 @@
 import { FORM, TBL } from "./global.js";
 import { saveLS, getLS } from "./storage.js";
 
-const renderTblHeading = function() {
+const renderTblHeading = () => {
   //   TBL.innerHTML = "";
 
   const table = document.createElement("table");
@@ -14,7 +14,7 @@ const renderTblHeading = function() {
     "Footprint",
     "Actions",
   ];
-  headingTextArr.forEach(function (text) {
+  headingTextArr.forEach( (text) => {
     const th = document.createElement("th");
     th.textContent = text;
     tr.appendChild(th);
@@ -26,7 +26,7 @@ const renderTblHeading = function() {
   return table;
 }
 
-const renderTblBtn = function(index, data) {
+const renderTblBtn = (index, data) => {
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
   const btnDel = document.createElement("button");
@@ -35,16 +35,16 @@ const renderTblBtn = function(index, data) {
   td.appendChild(btnEdit);
   td.appendChild(btnDel);
 
-  const onUpdate = function(index, data) {
+  const onUpdate = (index, data) => {
     data.splice(index, 1);
     saveLS(data);
     renderTbl(data);
   }
-  btnDel.addEventListener(`click`, function (e) {
+  btnDel.addEventListener(`click`, e => {
     onUpdate(index, data);
   });
 
-  btnEdit.addEventListener(`click`, function (e) {
+  btnEdit.addEventListener(`click`, e => {
     const obj = data[index];
 
     FORM[1].value = obj.firstName;
@@ -57,11 +57,14 @@ const renderTblBtn = function(index, data) {
   return td;
 }
 
-const renderTblBody = function(data) {
+const renderTblBody =(data)  => {
   const tbody = document.createElement("tbody");
   data.forEach(function (obj, index) {
     console.log(index);
     const tr = document.createElement("tr");
+
+    // Use the rest operator to handle varying object properties
+    const { lastName, houseMPTS, houseSPTS, ...restProps } = obj;
     for (const [key, value] of Object.entries(obj)) {
       console.log(`key ${key} value ${value}`);
       if (key !== "lastName" && key !== "houseMPTS" && key !== "houseSPTS") {
@@ -78,7 +81,7 @@ const renderTblBody = function(data) {
   return tbody;
 }
 
-const renderTbl = function(data) {
+const renderTbl = (data) => {
   TBL.innerHTML = "";
 
   const table = renderTblHeading();

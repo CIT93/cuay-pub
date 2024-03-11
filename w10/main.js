@@ -6,7 +6,24 @@ import {
 import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
 import { saveLS, cfpData } from "./storage.js";
 
-const  start = function(first, last, houseHoldMembers, houseSize) {
+// const  start = (first, last, houseHoldMembers, houseSize) => {
+//   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
+//   const houseSizePTS = determineHouseSizePts(houseSize);
+//   const total = houseHoldPTS + houseSizePTS;
+
+//   cfpData.push({
+//     firstName: first,
+//     lastName: last,
+//     houseM: houseHoldMembers,
+//     houseS: houseSize,
+//     houseMPTS: houseHoldPTS,
+//     houseSPTS: houseSizePTS,
+//     cfpTotal: total,
+//   });
+// }
+
+// Update the start function with default parameters
+const start = (first, last, houseHoldMembers = 1, houseSize = "large") => {
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const houseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + houseSizePTS;
@@ -43,7 +60,7 @@ renderTbl(cfpData);
 FNAME.addEventListener("blur", validateField);
 LNAME.addEventListener("blur", validateField);
 
-FORM.addEventListener("submit", function (e) {
+FORM.addEventListener("submit", e => {
   e.preventDefault();
 
   if (FNAME.value !== "" && LNAME.value !== "") {
@@ -62,12 +79,16 @@ FORM.addEventListener("submit", function (e) {
   }
 });
 
-const add2 = function(...a) {
-  return 2 + a[3];
-}
-const result = add2(1,2,3,4);
+// rest operator
+// const add2 = function(...a) {
+//   return 2 + a[3];
+// }
+// const result = add2(1,2,3,4);
 
-//spread argument
+//arrow function
+const add2 = a => 2 + a;
+
+const result = add2(100);
 
 //IIFE
 
