@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 11 - Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="carbonFootprintModule.js"></script>
+    <script type="module" src="render.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="global.js"></script>
+</head>
+<body>
+<form id="form">
+    <fieldset>
+        <legend>Calculate your Carbon Footprint</legend>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName" maxlength="20" />
+            <span id="firstNameError" class="error"></span>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" id="lastName" maxlength="25" />
+            <span id="lastNameError" class="error"></span>
+        </div>
+        <div>
+            <label for="housem">How many people in your home:</label>
+            <input type="number" id="housem" name="housem" min="1" max="6" required />
+        </div>
+        <div>
+            <label for="houseSize">Consider the size of your home:</label>
+            <select id="houseSize" name="houseSize" required>
+                <option value="">---Please select Size of Home---</option>
+                <option value="large">Large</option>
+                <option value="medium">Medium</option>
+                <option value="small">Small</option>
+                <option value="apt">Apartment</option>
+            </select>
+        </div>
+        <div>
+            <label for="food">Food Choice:</label>
+            <select id="food" name="food">
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="meat">Meat-based</option>
+                <option value="meat-daily">Domestic Meat Daily</option>
+                <option value="meat-few-times-week">Domestic Meat Few Times per Week</option>
+                <option value="vegan-wild-meat">Vegan/Wild Meat</option>
+            </select>
+        </div>
+        <div>
+            <label for="foodPackaging">Food Packaging:</label>
+            <select id="foodPackaging" name="foodPackaging">
+                <option value="prepackaged-convenience">Prepackaged Convenience Food</option>
+                <option value="balance-fresh-convenience">Balance of Fresh and Convenience Food</option>
+                <option value="fresh-local-hunted">Fresh, Locally Grown, or Hunted Food</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button><br />
+        <span id="submitError" class="error"></span>
+    </fieldset>
+</form>
+<div id="tab-data"></div>
+</body>
+</html>

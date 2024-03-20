@@ -1,0 +1,3 @@
+Did the video help me understand functions?
+
+Yes, the video did help alot in helping me get a better understanding of what a fucntion is and what it does. I have to admit I was a bit confused on the syntax of it all but I am glad that you made this video to help explain it better. I have a little more better understanding of how the function works and how a block scope is used and what can and can not be used once it is in a function. I will have to watch the video to take a deeper dive into functions with the video you provided and practice my coding a lot more to fully get the whole idea of Java Script. This is all brand new to me and I take a bit longer to grasp things. I appreciate the video review it does help me a lot. Thank you. 

@@ -23,16 +23,16 @@ import { saveLS, cfpData } from "./storage.js";
 // }
 
 // Update the start function with default parameters
-const start = (first, last, houseHoldMembers = 1, houseSize = "large") => {
-  const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
-  const houseSizePTS = determineHouseSizePts(houseSize);
+const start = (firstName, lastName, houseM = "defaultHouseM", houseS = "defaultHouseS") => {
+  const houseHoldPTS = determineHouseHoldPts(houseM);
+  const houseSizePTS = determineHouseSizePts(houseS);
   const total = houseHoldPTS + houseSizePTS;
 
   cfpData.push({
-    firstName: first,
-    lastName: last,
-    houseM: houseHoldMembers,
-    houseS: houseSize,
+    firstName: firstName,
+    lastName: lastName,
+    houseM: houseM,
+    houseS: houseS,
     houseMPTS: houseHoldPTS,
     houseSPTS: houseSizePTS,
     cfpTotal: total,
