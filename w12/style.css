@@ -1,0 +1,58 @@
+/* Style for exercise form */
+#exerciseForm {
+    margin-bottom: 20px;
+  }
+  
+ 
+  body {
+    background: linear-gradient( pink, purple) 
+}
+
+table {
+    margin: 0 auto; 
+}
+
+.container {
+    margin: 0 auto; 
+    max-width: 800px; 
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: left; /* Align form elements to the left */
+}
+label, input, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
+
+
+body {
+    font-size: 25px;
+}
+
+
+p {
+    color: white ; 
+}
+
+/* Change the text color of the dropdown menu */
+select {
+    color: black; 
+}
+
+/* Change the background color of the dropdown menu */
+select {
+    background-color: lightgray; 
+}

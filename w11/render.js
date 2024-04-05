@@ -1,12 +1,11 @@
 import { FORM, TBL } from "./global.js";
 import { saveLS } from "./storage.js";
 
-// Function to render table heading
 const renderTblHeading = () => {
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
-  const headings = ["Name", "HouseHold", "HouseSize", "Footprint", "Actions"];
+  const headings = ["Name", "HouseHold", "HouseSize", "Food Choice", "Footprint", "Actions"]; // Added "Food Choice" and "Food Packaging"
 
   headings.forEach(heading => {
     const th = document.createElement("th");
@@ -26,10 +25,8 @@ const renderTblBody = (data) => {
   data.forEach((obj, index) => {
     const tr = document.createElement("tr");
 
-    // Extract relevant properties from the object
-    const { first, last, houseMembers, houseSize, totalFootprint, food } = obj;
+    const { first, last, houseMembers, houseSize, totalFootprint, foodChoice} = obj;
 
-    // Create table cells for each property
     const tdName = document.createElement("td");
     tdName.textContent = `${first} ${last}`;
     tr.appendChild(tdName);
@@ -43,11 +40,11 @@ const renderTblBody = (data) => {
     tr.appendChild(tdHouseSize);
 
     const tdFood = document.createElement("td");
-    tdFood.textContent = food; // Add food choice
+    tdFood.textContent = foodChoice; 
     tr.appendChild(tdFood);
 
     const tdFootprint = document.createElement("td");
-    tdFootprint.textContent = totalFootprint; // Display the total footprint
+    tdFootprint.textContent = totalFootprint; 
     tr.appendChild(tdFootprint);
 
     // Add buttons for actions
@@ -84,8 +81,7 @@ const renderTblBtn = (index, data) => {
     FORM.lastName.value = obj.last;
     FORM.housem.value = obj.houseMembers;
     FORM.houseSize.value = obj.houseSize;
-    FORM.food.value = obj.food;
-    FORM.foodPackaging.value = obj.foodPackaging;
+    FORM.food.value = obj.foodChoice;
     // Update data after editing
     saveLS(data);
     renderTbl(data);

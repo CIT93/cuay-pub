@@ -1,52 +1,107 @@
-import { renderTbl } from "./render.js";
-import { determineHouseSizePts, determineHouseHoldPts } from "./carbonfootprintmodule.js";
-import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
-import { saveLS, cfpData } from "./storage.js";
-import { FP } from "./fp.js";
+// document.addEventListener{'DOMContentLoaded', function() {
+// import { renderTbl } from "./render.js";
+// import { FORM, SUBMIT, FNAME, LNAME, FCHOICE } from "./global.js";
+// import { saveLS, cfpData } from "./storage.js";
+// import { FP } from "./fp.js";
 
-// Function to validate a single field
-const validateField = (event) => {
-  const field = event.target.value;
-  const fieldId = event.target.id;
-  const fieldError = document.getElementById(`${fieldId}Error`);
+// const validateField = event => {
+//   const field = event.target.value;
+//   const fieldId = event.target.id;
+//   console.log("Field ID:", fieldId);
+//   const fieldError = document.getElementById(`${fieldId}Error`);
+//   console.log("Field Error Element:", fieldError);
+//   if (field === '') {
+//     fieldError.textContent = `${fieldId} is required`;
+//     event.target.classList.add(`invalid`);
+//   } else {
+//     fieldError.textContent = "";
+//     event.target.classList.remove("invalid");
+//   }
+// };
 
-  if (field === "") {
-    fieldError.textContent = `${fieldId} is required`;
-    event.target.classList.add("invalid");
-  } else {
-    fieldError.textContent = "";
-    event.target.classList.remove("invalid");
-  }
-};
+// // Attach blur event listeners
+// document.getElementById('firstName').addEventListener("blur", validateField);
+// document.getElementById('lastName').addEventListener("blur", validateField);
+// document.getElementById('housem').addEventListener("blur", validateField);
+// document.getElementById('houseSize').addEventListener("blur", validateField);
+// document.querySelector("select[name='foodChoice']").addEventListener("blur", validateField);
 
-// Attach blur event listeners
-FNAME.addEventListener("blur", validateField);
-LNAME.addEventListener("blur", validateField);
+// // Form submission event listener
+// document.getElementById('form').addEventListener("submit", (e) => {
+//   e.preventDefault();
 
-FORM.addEventListener("submit", (e) => {
-  e.preventDefault();
+//   const firstName = document.getElementById('firstName').value.trim();
+//   const lastName = document.getElementById('lastName').value.trim();
+//   const houseMembers = document.getElementById('housem').value.trim();
+//   const houseSize = document.getElementById('houseSize').value.trim();
+//   const food = document.querySelector("select[name='foodChoice']").value.trim();
 
-  // Get form values
-  const firstName = FNAME.value.trim();
-  const lastName = LNAME.value.trim();
-  const houseMembers = FORM.housem.value.trim();
-  const houseSize = FORM.houseSize.value;
-  const food = FORM.food.value; // Get selected food option
-  const foodPackaging = FORM.foodPackaging.value; // Get selected food packaging option
+//   const submitError = document.getElementById('submitError'); // Fetch submitError once
 
-  // Validate form fields
-  // Validation code...
+//   if (firstName !== "" && lastName !== "" && houseMembers !== "" && houseSize !== "" && food !== "") {
+//     submitError.textContent = "";
 
-  // If all fields are valid, proceed with form submission
-  if (firstName !== "" && lastName !== "") {
-    SUBMIT.textContent = "";
+//     const fpObj = new FP(firstName, lastName, parseInt(houseMembers), houseSize, food); 
+//     cfpData.push(fpObj);
+//     saveLS(cfpData);
+//     renderTbl(cfpData);
+//     FORM.reset();
+//   } else {
+//     submitError.textContent = "Form requires First and Last Name";
+//   }
+// });
 
-    const fpObj = new FP(firstName, lastName, parseInt(houseMembers), houseSize, 0, 0, 0, food, foodPackaging); // Include food options
-    cfpData.push(fpObj);
-    saveLS(cfpData);
-    renderTbl(cfpData);
-    FORM.reset();
-  } else {
-    SUBMIT.textContent = "Form requires First and Last Name";
-  }
+
+
+  import { renderTbl } from "./render.js";
+  import { FORM, SUBMIT, FNAME, LNAME, FCHOICE } from "./global.js";
+  import { saveLS, cfpData } from "./storage.js";
+  import { FP } from "./fp.js";
+  document.addEventListener('DOMContentLoaded', function() {
+  const validateField = event => {
+    const field = event.target.value;
+    const fieldId = event.target.id;
+    console.log("Field ID:", fieldId);
+    const fieldError = document.getElementById(`${fieldId}Error`);
+    console.log("Field Error Element:", fieldError);
+    if (field === '') {
+      fieldError.textContent = `${fieldId} is required`;
+      event.target.classList.add(`invalid`);
+    } else {
+      fieldError.textContent = "";
+      event.target.classList.remove("invalid");
+    }
+  };
+
+  // Attach blur event listeners
+  document.getElementById('firstName').addEventListener("blur", validateField);
+  document.getElementById('lastName').addEventListener("blur", validateField);
+  document.getElementById('houseM').addEventListener("blur", validateField);
+  document.getElementById('houseSize').addEventListener("blur", validateField);
+  document.getElementById('foodChoice').addEventListener("blur", validateField);
+
+  // Form submission event listener
+  document.getElementById('form').addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const houseMembers = document.getElementById('houseM').value.trim();
+    const houseSize = document.getElementById('houseSize').value.trim();
+    const food = document.getElementById('foodChoice').value.trim();
+
+    const submitError = document.getElementById('submitError'); // Fetch submitError once
+
+    if (firstName !== "" && lastName !== "" && houseMembers !== "" && houseSize !== "" && food !== "") {
+      submitError.textContent = "";
+
+      const fpObj = new FP(firstName, lastName, parseInt(houseMembers), houseSize, food); 
+      cfpData.push(fpObj);
+      saveLS(cfpData);
+      renderTbl(cfpData);
+      FORM.reset();
+    } else {
+      submitError.textContent = "Form requires First and Last Name";
+    }
+  });
 });

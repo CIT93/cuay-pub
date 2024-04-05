@@ -32,3 +32,7 @@ tbody, tr:nth-child(odd) {
     border-color: red;
 }
   
+
+.invalid {
+    border: 2px solid red; /* Add red border for invalid fields */
+}
