@@ -1,0 +1,97 @@
+/* Style for exercise form */
+#exerciseForm {
+    margin-bottom: 20px;
+  }
+  
+ 
+  body {
+    background: linear-gradient( pink, purple) 
+}
+
+table {
+    margin: 0 auto; 
+}
+
+.container {
+    margin: 0 auto; 
+    max-width: 800px; 
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+    display: inline-block;
+    text-align: left; /* Align form elements to the left */
+}
+label, input, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
+
+
+body {
+    font-size: 25px;
+}
+
+
+p {
+    color: white ; 
+}
+
+/* Change the text color of the dropdown menu */
+select {
+    color: rgb(243, 242, 242); 
+}
+
+/* Change the background color of the dropdown menu */
+select {
+    background-color: rgb(34, 15, 120); 
+}
+
+body {
+    background: linear-gradient(to bottom, #460846, #062330); 
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+    min-height: 100vh; /* Ensure the gradient covers the entire viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for container */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Form styling */
+form {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Output styling */
+#output {
+    background-color: rgba(25, 39, 147, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Fieldset styling */
+fieldset {
+    background-color: rgba(137, 21, 176, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    padding: 20px;
+}

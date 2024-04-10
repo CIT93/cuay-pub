@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Timer</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <form id="formExercise">
+        <fieldset>
+            <legend>Exercise With Me!</legend>
+            <div>
+                <label>Which Exercise Shall We Do:</label>
+                <select name="Excercises" required>
+                    <option value="">---Types of Exercise---</option>
+                    <option value="lunges">Lunges</option>
+                    <option value="planks">Planks</option>
+                    <option value="pull-ups">Pull-ups</option>
+                    <option value="Push-ups">Push-ups</option>
+                    <option value="sit-ups">Sit-ups</option>
+                    <option value="squats">Squats</option>
+                </select>
+            </div>
+            <div>
+                <label>Number of Reps:</label>
+                <input type="text" name="reps" min="1" maxlength="20" required/>
+            </div>
+            <div>
+                <label>Time Duration (MIN):</label>
+                <input type="text" name="time" min="1" max="1000" required/>
+            </div>
+            <h3>Click Start to Begin!</h3>
+            <button type="submit">Start</button>
+        </fieldset>
+    </form>
+    <div id="output"></div>
+    <script src="main.js"></script>
+</body>
+</html>

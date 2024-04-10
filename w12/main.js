@@ -54,3 +54,4 @@ document.getElementById('formExercise').addEventListener('submit', function(e) {
     // Start the exercise timer
     startExercise(exercise, time);
 });
+
