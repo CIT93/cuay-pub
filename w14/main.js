@@ -1,31 +1,51 @@
 function renderPhotos(photos) {
-    photos.forEach((img) => {
-      const imgEl = document.createElement("img");
-      imgEl.setAttribute("src", img.thumbnailUrl); // corrected syntax: "src", img.thumbnailUrl
-      document.getElementById("photos").appendChild(imgEl); // Changed "output" to "photos"
-    });
+  const outputElement = document.getElementById("output"); // Ensure target element exists
+  if (!outputElement) {
+    console.error("Output element not found"); // Log error if element not found
+    return;
   }
-  
-  async function getPhotos() {
-    // Simulated data for demonstration purposes
-    const photos = [
-      { thumbnailUrl: "https://via.placeholder.com/200/FF0000/FFFFFF" },
-      { thumbnailUrl: "https://via.placeholder.com/200/00FF00/FFFFFF" },
-      { thumbnailUrl: "https://via.placeholder.com/200/0000FF/FFFFFF" },
-      { thumbnailUrl: "https://via.placeholder.com/200/FFFF00/000000" },
-      { thumbnailUrl: "https://via.placeholder.com/200/00FFFF/000000" },
-      { thumbnailUrl: "https://via.placeholder.com/200/FF00FF/000000" },
-      { thumbnailUrl: "https://via.placeholder.com/200/FFFFFF/000000" },
-      { thumbnailUrl: "https://via.placeholder.com/200/000000/FFFFFF" },
-      { thumbnailUrl: "https://via.placeholder.com/200/808080/FFFFFF" },
-      { thumbnailUrl: "https://via.placeholder.com/200/800000/FFFFFF" }
-    ];
-    return photos;
+
+  // Render each photo
+  photos.forEach((img) => {
+    const imgEl = document.createElement("img");
+    imgEl.setAttribute("src", img.thumbnailUrl); // Set image source
+    outputElement.appendChild(imgEl); // Append to the DOM
+  });
+}
+
+async function getPhotos() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/photos"); // Fetch data
+
+    // Check if the response is okay
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
+    const photos = await response.json(); // Convert response to JSON
+    
+    // Check if the photos array is empty
+    if (!photos.length) {
+      console.error("Error: No photos found"); // Log error message
+    } else {
+      onSuccess(photos); // Call onSuccess with the data
+    }
+
+  } catch (error) {
+    onError(error); // Call onError with the error
   }
-  
-  async function start() {
-    const photos = await getPhotos();
-    renderPhotos(photos);
-  }
-  
-  start();
+}
+
+function onSuccess(photos) {
+  renderPhotos(photos); // Render photos on success
+}
+
+function onError(error) {
+  console.error(`Error: ${error.message}`); // Handle and log errors
+}
+
+function start() {
+  getPhotos(); // Start fetching photos
+}
+
+start(); // Call start to begin the process
